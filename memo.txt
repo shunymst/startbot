@@ -1,0 +1,45 @@
+#python 3.5.2
+#pycharm
+#pip
+
+#pip install hacking
+settings - pep8
+
+#autopep8
+autopep8 -i PycharmProjects/startbot/helloworld.py
+
+#-------------------------------------
+#aum gaeshi
+#special thanks to http://qiita.com/Algebra_nobu/items/36bc4cc6cf4163b66847
+pop_up.py
+installed PyQt5
+
+view sota.jpg -> OK
+input message with txtbox -> OK
+
+#-------------------------------------
+#watson api
+call_watson.py
+
+make WLC -> OK
+
+call watson api ->
+with input txt ->
+display answer ->
+
+
+
+#-------------------------------------
+#Online service
+
+AWS EC2
+
+#-------------------------------------
+#LINE bot
+
+https://developers.line.me/channels/1479621194/edit
+
+http://qiita.com/shizuma/items/2dadc349c82f456056fd#_reference-60c309379737ff346d57
+--> needs CallBack URL so, needs online
+--> build at AWS or Heroku?
+　--> AWS EC2 make!
