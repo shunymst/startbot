@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import sys
-from PyQt5.QtWidgets import (QWidget, QHBoxLayout,
-                             QLabel, QApplication, QLineEdit)
+from PyQt5.QtWidgets import (QWidget, QHBoxLayout, QVBoxLayout,
+                             QLabel, QApplication, QLineEdit, QPushButton)
 from PyQt5.QtGui import QPixmap, QIcon
 
 
@@ -15,27 +15,38 @@ class Example(QWidget):
     def initUI(self):
         hbox = QHBoxLayout(self)
 
-        # ラベルオブジェクト作成
-        self.lbl = QLabel(self)
-        # QLineEditオブジェクト作成
-        qle = QLineEdit(self)
-
-        qle.move(230, 20)
-        self.lbl.move(230, 50)
-
-        # qleに文字が入力されたら、onChanged関数の呼び出し
-        qle.textChanged[str].connect(self.onChanged)
-
-        self.setGeometry(300, 500, 480, 300)
-
         # QPixmapオブジェクト作成
         pixmap = QPixmap("sota.jpg")
         # ラベルを作ってその中に画像を置く
-        lbl = QLabel(self)
-        lbl.setPixmap(pixmap)
-        lbl.move(100, 100)
+        img = QLabel(self)
+        img.setPixmap(pixmap)
+        img.move(100, 100)
 
-        hbox.addWidget(lbl)
+        # QLineEditオブジェクト作成
+        txt = QLineEdit(self)
+        # ボタン
+        button = QPushButton("会話", self)
+        # ラベルオブジェクト作成
+        #ans = QLabel(self)
+        ans = QLabel("ここに回答がでてきます")
+
+
+        # スロットを設定
+        button.clicked.connect(self.submit)
+
+        # qleに文字が入力されたら、onChanged関数の呼び出し
+        #txt.textChanged[str].connect(self.onChanged)
+
+        #ウィジェット設定
+        hbox.addWidget(img)
+
+        #vbox = QVBoxLayout()
+        #vbox.addWidget(txt)
+        #vbox.addWidget(button)
+        #hbox.addLayout(vbox)
+        hbox.addWidget(txt)
+        hbox.addWidget(button)
+        #hbox.addWidget(ans)
         self.setLayout(hbox)
 
         self.move(200, 200)
@@ -45,11 +56,15 @@ class Example(QWidget):
 
         self.show()
 
-    def onChanged(self, text):
+    def submit(self, text):
         # ラベルに入力されたテキストを挿入
-        self.lbl.setText(text)
-        # 入力されたテキストによって、ラベルの長さを調整
-        self.lbl.adjustSize()
+
+        #hbox = QHBoxLayout(self)
+        #hbox.removeWidget()
+
+        self.ans.setText('hoge')
+        #self.setWindowIcon(QIcon('sota2.jpg'))
+
 
 
 if __name__ == '__main__':

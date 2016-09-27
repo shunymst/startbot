@@ -24,11 +24,11 @@ call_watson.py
 make WLC -> OK
 
 call watson api ->
+
+https://stedolan.github.io/jq/download/ jq installed
+
 with input txt ->
 display answer ->
-
-
-
 #-------------------------------------
 #Online service
 
