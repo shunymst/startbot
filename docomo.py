@@ -4,7 +4,7 @@ import requests
 import pprint
 import json
 
-api_key = '7979414a5256614c73706c68544862777254344c58614c36575676744f48514977654e3057783963434438'
+api_key = 'ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ'
 
 
 def kaiwa(kaiwa, context):
