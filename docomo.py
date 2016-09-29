@@ -7,9 +7,9 @@ import json
 api_key = '7979414a5256614c73706c68544862777254344c58614c36575676744f48514977654e3057783963434438'
 
 
-def kaiwa(kaiwa):
+def kaiwa(kaiwa, context):
     json_data = {'utt':kaiwa,
-                 'context':(''),
+                 'context':context,
                  't': ('30')
                  }
     response = requests.post(
@@ -20,7 +20,9 @@ def kaiwa(kaiwa):
     pprint.pprint(response.json())
     resjson = response.json()
 
-    return  resjson["utt"]
+    # resjson["utt"]
+    return resjson
+
 
 if __name__ == '__main__':
-    kaiwa("こんにちは");
+    kaiwa("こんにちは", "");

@@ -3,6 +3,7 @@
 from PyQt5.QtWidgets import (QApplication, QWidget,
                              QGridLayout, QVBoxLayout, QHBoxLayout,
                              QLabel, QLineEdit, QPushButton)
+from PyQt5.QtGui import QPixmap, QIcon
 import docomo
 import json
 import pprint
@@ -11,46 +12,47 @@ class MainWindow(QWidget):
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
 
-        self.contextId = ""
-
-        # オウム返しゾーン------------
-        self.inputLine = QLineEdit()
-        self.outputLine = QLineEdit()
-        self.outputLine.setReadOnly(True)
-
-        self.calcButton = QPushButton("&会話")
-        self.calcButton.clicked.connect(self.oumu)
+        # QPixmapオブジェクト作成
+        pixmap = QPixmap("baby.png")
+        # ラベルを作ってその中に画像を置く
+        img = QLabel(self)
+        img.setPixmap(pixmap)
+        img.move(100, 100)
 
         # docomo対話ゾーン------------
-        self.inputLine2 = QLineEdit()
-        self.outputLine2 = QLineEdit()
-        self.outputLine2.setReadOnly(True)
 
-        self.calcButton2 = QPushButton("&会話")
+        # 会話コンテキスト保持
+        self.contextId = ""
+
+        self.inputLine2 = QLineEdit()
+        self.inputLine2.setFixedWidth(200)
+        self.outputLine2 = QLabel()
+        self.outputLine2.setFixedWidth(200)
+        self.outputLine2.setText("おはなししてね")
+        # self.outputLine2.setReadOnly(True)
+
+        self.calcButton2 = QPushButton("&おはなし")
         self.calcButton2.clicked.connect(self.kaiwa)
 
+        lineLayoutImg = QGridLayout()
+        lineLayoutImg.addWidget(img, 0, 0)
+
         lineLayout = QGridLayout()
-        lineLayout.addWidget(QLabel("----------オウム返し----------"), 0, 0)
-        lineLayout.addWidget(QLabel("話したいこと"), 1, 0)
-        lineLayout.addWidget(self.inputLine, 1, 1)
-        lineLayout.addWidget(QLabel("お返事"), 2, 0)
-        lineLayout.addWidget(self.outputLine, 2, 1)
-        lineLayout.addWidget(QLabel("----------雑談----------"), 3, 0)
-        lineLayout.addWidget(QLabel("話したいこと"), 4, 0)
-        lineLayout.addWidget(self.inputLine2, 4, 1)
-        lineLayout.addWidget(QLabel("お返事"), 5, 0)
-        lineLayout.addWidget(self.outputLine2, 5, 1)
+        lineLayout.addWidget(QLabel("はなしたいこと:"), 1, 0)
+        lineLayout.addWidget(self.inputLine2, 1, 1)
+        lineLayout.addWidget(QLabel("へんじ　　　　:"), 2, 0)
+        lineLayout.addWidget(self.outputLine2, 2, 1)
 
         buttonLayout = QVBoxLayout()
-        buttonLayout.addWidget(self.calcButton)
         buttonLayout.addWidget(self.calcButton2)
 
         mainLayout = QHBoxLayout()
+        mainLayout.addLayout(lineLayoutImg)
         mainLayout.addLayout(lineLayout)
         mainLayout.addLayout(buttonLayout)
 
         self.setLayout(mainLayout)
-        self.setWindowTitle("会話")
+        self.setWindowTitle("おはなししよう")
 
     def oumu(self):
         n = self.inputLine.text()
