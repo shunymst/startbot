@@ -1,1 +1,2 @@
-popup4:__main__
+
+worker: exec popup4:__main__
