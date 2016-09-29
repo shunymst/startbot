@@ -1,2 +1,2 @@
 
-worker: exec popup4:__main__
+worker: python popup4.py
