@@ -1,2 +1,4 @@
 PyQt5
 requests==2.11.1
+json
+pprint
